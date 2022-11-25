@@ -1,2 +1,2 @@
-# ExamenPHPtrimestre1
+# examenPHPtrimestre
 Examen de despliegue/servidor. Primer trimestre

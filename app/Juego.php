@@ -1,5 +1,5 @@
 <?php
-namespace ExamenPHPtrimestre1\app;
+namespace examenPHPtrimestre\app;
 
 class Juego extends Soporte
 {

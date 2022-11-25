@@ -1,5 +1,5 @@
 <?php
-namespace ExamenPHPtrimestre1\app;
+namespace examenPHPtrimestre\app;
 
 //Los hijos no necesitan implementar la interface.
 //De hecho si borramos la función de los hijos, cogerá la del padre cuando lo llamemos

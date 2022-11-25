@@ -1,5 +1,5 @@
 <?php
-use ExamenPHPtrimestre1\app\VideoClub;
+use examenPHPtrimestre\app\VideoClub;
 include_once "autoload.php"; 
 
 $vc = new Videoclub("Severo 8A"); 

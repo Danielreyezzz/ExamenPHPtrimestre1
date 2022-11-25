@@ -1,7 +1,7 @@
 <?php
-use ExamenPHPtrimestre1\app\Cliente;
-use ExamenPHPtrimestre1\app\Disco;
-use ExamenPHPtrimestre1\app\Juego;
+use examenPHPtrimestre\app\Cliente;
+use examenPHPtrimestre\app\Disco;
+use examenPHPtrimestre\app\Juego;
 include_once "autoload.php";
 $cliente1 = new Cliente("Bruce Wayne", 100);
 $cliente2 = new Cliente("Clark Kent", 101);
