@@ -1,4 +1,7 @@
 <?php
+namespace ExamenPHPtrimestre1\app;
+
+
 
 class CintaVideo extends Soporte
 {

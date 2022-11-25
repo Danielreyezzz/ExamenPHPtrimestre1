@@ -1,9 +1,6 @@
 <?php
-include_once "Cliente.php";
-include_once "Juego.php";
-include_once "Disco.php";
-include_once "CintaVideo.php";
-
+namespace ExamenPHPtrimestre1\app{
+  
 class VideoClub
 {
     private $producto = [];
@@ -35,9 +32,9 @@ class VideoClub
         $disco = new Disco($titulo, $numero, $precio, $idiomas, $pantalla);
         $this->incluirProducto($disco);
     }
-    public function incluirSocio(String $nombre, int $numero, int $maxAlquileresConcurrentes)
+    public function incluirSocio(String $nombre, int $numero, int $maxAlquileresConcurrentes = 3)
     {
-        $socio = new Cliente($nombre, $numero, $maxAlquileresConcurrentes);
+        $socio = new Cliente($nombre, $numero, $maxAlquileresConcurrentes );
         array_push($this->socios, $socio);
         ++$this->numSocios;
     }
@@ -57,6 +54,7 @@ class VideoClub
             }
         }
     }
+    //Función modificada para devolver $this
     public function alquilarSocioProducto(int $numeroCliente, int $numeroSoporte)
     {
         foreach ($this->socios as $key => $value) {
@@ -69,17 +67,10 @@ class VideoClub
             }
         }
 
+        return $this;
+
     }
 }
 
 
-$video = new VideoClub("VideoDaniel");
-$video->incluirJuego("Undertale", 1, 1.3, "PC", 1, 1);
-$video->incluirDvd("Batman", 2, 3, "esp", "fullhd");
-$video->incluirCintaVideo("Verano Azul", 3, 4, "5h");
-$video->listarProductos();
-$video->incluirSocio("Pepe", 1, 4);
-$video->incluirSocio("Alba", 2, 2);
-$video->alquilarSocioProducto(2, 3);
-
-echo $video->socios[1]->listarAlquileres();
+}

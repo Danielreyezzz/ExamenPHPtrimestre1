@@ -1,4 +1,8 @@
 <?php 
+namespace ExamenPHPtrimestre1\app;
+
+
+
 
 class Disco extends Soporte{
 

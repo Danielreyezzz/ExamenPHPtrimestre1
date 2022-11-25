@@ -1,5 +1,6 @@
 <?php
-include "Soporte.php";
+namespace ExamenPHPtrimestre1\app;
+
 class Juego extends Soporte
 {
 

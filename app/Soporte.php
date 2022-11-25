@@ -2,7 +2,9 @@
 //Abstrayendo la clase conseguimos que sea imposible de instanciar
 //Esto nos viene bien para evitar errores, sobre todo si varias personas trabajan en el código
 //Evitas que nadie instancie una clase que no tiene que ser instanciada
-include_once "Resumible.php";
+namespace ExamenPHPtrimestre1\app;
+
+
 abstract class Soporte implements iResumible
 {
         const IVA = 1.21;

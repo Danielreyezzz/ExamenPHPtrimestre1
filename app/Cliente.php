@@ -1,4 +1,5 @@
 <?php
+namespace ExamenPHPtrimestre1\app;
 
 class Cliente
 {
@@ -39,36 +40,38 @@ class Cliente
         return $tieneAlquilado;
     }
 
-    public function alquilar(Soporte $s): bool
+    //Métodos modificados para devolver $this. No tiene sentido que devuelvan un booleano
+    public function alquilar(Soporte $s)
     {
         if ($this->tieneAlquilado($s)) {
-            echo "El soporte ya está alquilado";
-            return false;
+            echo "</br>El soporte ya está alquilado</br>";
+            
         } elseif ($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente) {
-            echo "Se ha superado el cupo de alquileres. Intentelo más tarde";
-            return false;
+            echo "</br>Se ha superado el cupo de alquileres. Intentelo más tarde</br>";
+         
         } else {
             ++$this->numSoportesAlquilados;
             array_push($this->soportesAlquilados, $s);
             echo "</br>El soporte ha sido alquilado con éxito </br>";
-            return true;
+           
         }
+        return $this;
     }
-    public function devolver(int $numSoporte): bool
+    public function devolver(int $numSoporte)
     {
         $isAlquilado = false;
         foreach ($this->soportesAlquilados as $key => $value) {
             if ($value->getNumero() == $numSoporte) {
-                echo "El soporte ha sido devuelto con éxito";
+                echo "</br>El soporte ha sido devuelto con éxito</br>";
                 unset($this->soportesAlquilados[$key]);
                 --$this->numSoportesAlquilados;
                 $isAlquilado = true;
             }
         }
         if (!$isAlquilado) {
-            echo "No alquilaste este soporte";
+            echo "</br>No alquilaste este soporte</br>";
         }
-        return $isAlquilado;
+        return $this;
     }
     public function listarAlquileres()
     {
