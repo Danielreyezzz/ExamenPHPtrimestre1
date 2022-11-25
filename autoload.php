@@ -4,9 +4,10 @@
 //Autoload incluido. Los index la implementan. De esta manera nos evitamos tener que incluir cada clase correspondiente
 
 
-function autoload($class)
+function autoload($nombreClase)
 {
-  require_once "..\\". $class. ".php";
+  $dir = str_replace("\\", "/", $nombreClase); 
+    include_once "../" . $dir . ".php";
 }
 
 spl_autoload_register('autoload');
