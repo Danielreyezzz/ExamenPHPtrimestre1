@@ -140,7 +140,7 @@ namespace examenPHPtrimestre\app {
 
             return $this;
         }
-        //Función igual a alquilarSocioProductos pero usando devolverSocioProducto()
+        //Función igual a alquilarSocioProductos pero usando devolverSocioProducto();
         public function devolverSocioProductos(int $numSocio, array $numerosProductos)
         {
             $alquilado = true;
