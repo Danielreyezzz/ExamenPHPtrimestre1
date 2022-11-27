@@ -1,5 +1,11 @@
 <?php
 namespace examenPHPtrimestre\app;
+include_once "autoload.php";
+
+use examenPHPtrimestre\util\CupoSuperadoException;
+use examenPHPtrimestre\util\SoporteNoEncontradoException;
+use examenPHPtrimestre\util\SoporteYaAlquiladoException;
+use Exception;
 
 class Cliente
 {
@@ -8,7 +14,7 @@ class Cliente
     public function __construct(
         public String $nombre,
         private int $numero,
-        private int $maxAlquilerConcurrente = 3,
+        private int $maxAlquilerConcurrente = 3
     ) {
     }
 
@@ -43,20 +49,26 @@ class Cliente
     //Métodos modificados para devolver $this. No tiene sentido que devuelvan un booleano
     public function alquilar(Soporte $s)
     {
+        try{
         if ($this->tieneAlquilado($s)) {
-            echo "</br>El soporte ya está alquilado</br>";
+            throw new SoporteYaAlquiladoException();
             
-        } elseif ($this->numSoportesAlquilados >= $this->maxAlquilerConcurrente) {
-            echo "</br>Se ha superado el cupo de alquileres. Intentelo más tarde</br>";
-         
-        } else {
+        } elseif ($this->numSoportesAlquilados > $this->maxAlquilerConcurrente) {
+           
+            throw new CupoSuperadoException();
+        } 
+        else {
             ++$this->numSoportesAlquilados;
             array_push($this->soportesAlquilados, $s);
+            $s->setAlquilado(true);
             echo "</br>El soporte ha sido alquilado con éxito </br>";
            
         }
         return $this;
+    }catch(SoporteYaAlquiladoException  | CupoSuperadoException $ms ){
+        echo "¡Capturada una excepción! " . $ms->getMessage();
     }
+}
     public function devolver(int $numSoporte)
     {
         $isAlquilado = false;
@@ -65,11 +77,19 @@ class Cliente
                 echo "</br>El soporte ha sido devuelto con éxito</br>";
                 unset($this->soportesAlquilados[$key]);
                 --$this->numSoportesAlquilados;
+                $value->setAlquilado(false);
                 $isAlquilado = true;
+                return $this;
             }
         }
         if (!$isAlquilado) {
-            echo "</br>No alquilaste este soporte</br>";
+            try{
+                throw new SoporteNoEncontradoException();
+            }catch(SoporteNoEncontradoException $ms){
+                echo "¡Capturada una excepción! " . $ms->getMessage();
+                return $this;
+            }
+            
         }
         return $this;
     }

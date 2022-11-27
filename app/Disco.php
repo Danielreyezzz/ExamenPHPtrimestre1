@@ -1,9 +1,6 @@
 <?php 
 namespace examenPHPtrimestre\app;
 
-
-
-
 class Disco extends Soporte{
 
     public function __construct(

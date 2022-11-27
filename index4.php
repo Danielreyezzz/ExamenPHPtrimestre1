@@ -19,6 +19,6 @@ $soporte4 = new Disco("El Imperio Contraataca", 4, 3, "es,en","16:9");
 
 //Modificado para encadenar 
 
-$cliente1->alquilar($soporte1)->alquilar($soporte2)->alquilar($soporte4)->alquilar($soporte3)->devolver(1)->alquilar($soporte3);
+$cliente1->alquilar($soporte1)->alquilar($soporte2)->devolver(3);
 
-$cliente1->listarAlquileres();
+// $cliente1->listarAlquileres();

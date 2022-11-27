@@ -8,6 +8,7 @@ namespace examenPHPtrimestre\app;
 abstract class Soporte implements iResumible
 {
         const IVA = 1.21;
+        public bool $alquilado = false;
         public function __construct(
                 public String $titulo,
                 protected int $numero,
@@ -28,6 +29,19 @@ abstract class Soporte implements iResumible
         {
                 return $this->precio * $this::IVA;
         }
+        public function getAlquilado()
+        {
+                return $this->alquilado;
+        }
+
+        public function setAlquilado($alquilado)
+        {
+                $this->alquilado = $alquilado;
+
+                return $this;
+        }
+
+
         public function muestraResumen()
         {
                 echo "</br>RESUMEN:</br>Título: " .  $this->titulo . "</br>" .
